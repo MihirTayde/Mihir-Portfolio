@@ -1,0 +1,40 @@
+.nav-container {
+  background: #000;
+
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  max-height: 90px;
+  box-shadow: 0px 0px 10px 10px rgb(14, 14, 78);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 100%;
+}
+
+.logo-container {
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.logo-image {
+  height: 100%
+}
+
+.nav-text {
+  color: white;
+  font-size: larger;
+}
+
+.nav-text:hover {
+    cursor: pointer;
+    color: yellow;
+    box-shadow: 0 0 2px 2px white;
+    
+}
+
+.nav-text-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
