@@ -1,15 +1,44 @@
-
-
-import "./Carausel.css"
-
-
+import "./Carausel.css";
 
 const Carausel = () => {
   return (
-    <div className="carausel-container">
-      <h1>Tech Stack</h1>
-    </div>
-  )
-}
+    <div>
+      <div className="logos">
+        <div className="logos-slide">
+          <img src="../../src/assets/HTML.png" />
+          <img src="../../src/assets/CSS.png" />
+          <img src="../../src/assets/JS.png" />
+          <img src="../../src/assets/React.png" />
+  
+        </div>
+        <div className="logos-slide">
+          <img src="../../src/assets/HTML.png" />
+          <img src="../../src/assets/CSS.png" />
+          <img src="../../src/assets/JS.png" />
+          <img src="../../src/assets/React.png" />
+  
+        </div>
+        <div className="logos-slide">
+          <img src="../../src/assets/HTML.png" />
+          <img src="../../src/assets/CSS.png" />
+          <img src="../../src/assets/JS.png" />
+          <img src="../../src/assets/React.png" />
+  
+        </div>
+        
 
-export default Carausel
+        {/* <div className="logos-slide">
+          <img src="../../src/assets/HTML.png" />
+          <img src="../../src/assets/React.png" />
+          <img src="../../src/assets/HTML.png" />
+          <img src="../../src/assets/CSS.png" />
+          <img src="../../src/assets/JS.png" />
+          <img src="../../src/assets/React.png" />
+          
+        </div> */}
+      </div>
+    </div>
+  );
+};
+
+export default Carausel;
