@@ -1,5 +1,4 @@
 import Nav from "./components/Navbar/Nav";
-import Rough from "./components/Rough";
 import "./App.css";
 import Hero from "./components/Hero/Hero";
 import Experience from "./components/Experience/Experience";
@@ -11,9 +10,9 @@ const App = () => {
   return (
     <div className="app-container ">
       <Nav></Nav>
-     
+
       <Hero></Hero>
-      <Rough></Rough>
+
       <Experience></Experience>
       <Projects></Projects>
       <Mailbox></Mailbox>
