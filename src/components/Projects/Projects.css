@@ -85,17 +85,16 @@
   color: #0056b3;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .projects-title {
-    font-size: 2rem;
+      font-size: 1.8rem;
   }
 
   .project-card {
-    padding: 1rem;
+      padding: 0.8rem;
   }
 
   .project-image {
-    height: 150px;
+      height: 120px;
   }
 }

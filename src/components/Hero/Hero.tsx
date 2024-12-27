@@ -12,12 +12,14 @@ const Hero = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
+      viewport={{ once: false }} // Allow repeated animations
     >
       {/* Left Section: Hero Image */}
       <motion.div
         className="hero-image-container"
         initial={{ x: -100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: false }} // Trigger every time it's in view
         transition={{ duration: 1 }}
       >
         <img
@@ -32,7 +34,8 @@ const Hero = () => {
       <motion.div
         className="hero-text-container"
         initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        viewport={{ once: false }} // Trigger every time it's in view
         transition={{ duration: 1 }}
       >
         <span className="hero-greeting">
@@ -60,14 +63,16 @@ const Hero = () => {
         <motion.div
           className="hero-socials"
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }} // Trigger every time it's in view
           transition={{ duration: 1 }}
         >
           <div className="hero-text-container">Connect with me:</div>
           <motion.div
             className="social-icons"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false }} // Trigger every time it's in view
             transition={{ duration: 1, delay: 0.3 }}
           >
             <motion.a

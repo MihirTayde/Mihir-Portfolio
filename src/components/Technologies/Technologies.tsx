@@ -4,8 +4,8 @@ import "./Technologies.css";
 
 const Technologies = () => {
   const { ref, inView } = useInView({
-    triggerOnce: true, // Trigger animation only once
-    threshold: 0.5, // Trigger when 50% of the component is in view
+     // Trigger animation only once
+    threshold: 0.2, // Trigger when 50% of the component is in view
   });
 
   const technologies = [
