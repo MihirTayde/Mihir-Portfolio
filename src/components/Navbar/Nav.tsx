@@ -1,5 +1,5 @@
 import "./Nav.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Nav = () => {
   return (

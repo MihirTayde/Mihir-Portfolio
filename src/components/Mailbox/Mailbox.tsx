@@ -1,41 +1,50 @@
-import { useState, useRef, useEffect, useState as useIntersectionState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./Mailbox.css";
-import emailjs from "emailjs-com"; // Correct import
+import emailjs from "emailjs-com";
 
-const Mailbox = () => {
-  const [formData, setFormData] = useState({
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+const Mailbox: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
   });
 
-  const [isVisible, setIsVisible] = useIntersectionState(false); // State to track visibility
-  const form = useRef(); // Reference for the form
+  const [isVisible, setIsVisible] = useState<boolean>(false); // State to track visibility
+  const form = useRef<HTMLFormElement | null>(null); // Reference for the form
 
   // Handle visibility change
-  const handleIntersection = (entries) => {
+  const handleIntersection: IntersectionObserverCallback = (entries) => {
     const entry = entries[0];
     setIsVisible(entry.isIntersecting); // Update state when component is in view
   };
 
   useEffect(() => {
+    const currentForm = form.current; // Copy the ref value
+  
     const observer = new IntersectionObserver(handleIntersection, {
       threshold: 0.5, // Trigger when 50% of the component is in view
     });
-
-    if (form.current) {
-      observer.observe(form.current);
+  
+    if (currentForm) {
+      observer.observe(currentForm);
     }
-
+  
     return () => {
-      if (form.current) {
-        observer.unobserve(form.current);
+      if (currentForm) {
+        observer.unobserve(currentForm); // Use the local variable here
       }
     };
   }, []);
+  
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -43,8 +52,13 @@ const Mailbox = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!form.current) {
+      alert("Form reference is not available.");
+      return;
+    }
 
     // Use emailjs to send form data
     emailjs
@@ -96,7 +110,7 @@ const Mailbox = () => {
             <input
               type="email"
               id="email"
-              name="email" // Corrected to match formData
+              name="email"
               value={formData.email}
               onChange={handleChange}
               required

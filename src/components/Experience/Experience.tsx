@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import "./Experience.css";
 
 const Experience = () => {
-  const [selectedCertificate, setSelectedCertificate] = useState(null);
+  type CertificateType = string | null;
+  const [selectedCertificate, setSelectedCertificate] = useState<CertificateType>(null);
 
   const experiences = [
     {
@@ -17,13 +18,15 @@ const Experience = () => {
       id: 2,
       title: "Alibaba Cloud Certification",
       company: "Alibaba Cloud",
-      duration: " Feb 2024",
+      duration: "Feb 2024",
       certificate: "/Logo/Alibaba.jpg",
     },
   ];
 
-  const handleCertificateClick = (certificate) => {
-    setSelectedCertificate(certificate);
+  const handleCertificateClick = (certificate: CertificateType) => {
+    if (certificate) {
+      setSelectedCertificate(certificate);
+    }
   };
 
   const closeModal = () => {
@@ -48,6 +51,7 @@ const Experience = () => {
             <button
               className="certificate-btn"
               onClick={() => handleCertificateClick(exp.certificate)}
+              aria-label={`View certificate for ${exp.title}`}
             >
               View Certificate
             </button>
@@ -76,7 +80,11 @@ const Experience = () => {
               alt="Certificate"
               className="certificate-image"
             />
-            <button className="close-modal-btn" onClick={closeModal}>
+            <button
+              className="close-modal-btn"
+              onClick={closeModal}
+              aria-label="Close certificate modal"
+            >
               Close
             </button>
           </motion.div>

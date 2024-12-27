@@ -13,7 +13,7 @@ const App = () => {
       <Nav></Nav>
 
       <Hero></Hero>
-<Experience></Experience>
+      <Experience></Experience>
       <Technologies></Technologies>
       <Projects></Projects>
       <Mailbox></Mailbox>
