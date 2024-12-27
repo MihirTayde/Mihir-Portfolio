@@ -1,48 +1,75 @@
+.outerdiv {
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  justify-content: end;
+}
+
 .mailbox-container {
   padding: 2rem;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
+  background: transparent;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns content to the right */
   max-width: 600px;
-  margin: 2rem auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin: 0 auto; /* Centers the container horizontally */
+  width: 90%; /* Ensures responsiveness for smaller screens */
 }
 
 .mailbox-title {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 1rem;
+  width: 100%; /* Full width to center-align the text */
 }
 
 .mailbox-subtitle {
   text-align: center;
   margin-bottom: 2rem;
+  width: 100%; /* Full width to center-align the text */
 }
 
 .mailbox-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  width: 100%; /* Ensures the form takes full container width */
+  align-items: flex-end; /* Aligns form inputs to the right */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 600px; /* Restricts inputs to 600px max width */
 }
 
 label {
   font-size: 1rem;
   margin-bottom: 0.5rem;
+  color: #cbd5e1; /* Light gray for better contrast */
 }
 
 input,
 textarea {
   padding: 0.8rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid #4a5568; /* Subtle border for modern look */
   border-radius: 4px;
   background-color: #2d3748;
   color: white;
+  width: 100%; /* Ensures inputs are responsive */
+  box-sizing: border-box; /* Includes padding in width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #c7e879;
+  box-shadow: 0 0 5px #c7e879;
+  outline: none;
 }
 
 textarea {
@@ -58,9 +85,25 @@ textarea {
   border-radius: 4px;
   color: #1e293b;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-end; /* Ensures the button aligns to the right */
 }
 
 .submit-btn:hover {
   background-color: #a8c45b;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .mailbox-container {
+    align-items: center; /* Center-aligns content for smaller screens */
+  }
+
+  .mailbox-form {
+    align-items: center; /* Aligns form inputs to the center */
+  }
+
+  .submit-btn {
+    align-self: center; /* Centers the button */
+  }
 }

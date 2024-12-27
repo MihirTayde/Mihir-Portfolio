@@ -1,75 +1,88 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import "./Experience.css";
 
 const Experience = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Trigger animation only once
-    threshold: 0.5, // Trigger when 50% of the component is in view
-  });
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
-  const technologies = [
-    "MongoDB",
-    "Express.js",
-    "React.js",
-    "Node.js",
-    "JavaScript",
-    "HTML & CSS",
-    "Git & GitHub",
-    "Firebase",
+  const experiences = [
+    {
+      id: 1,
+      title: "Frontend Developer Intern",
+      company: "Wertone Technology",
+      duration: "June 2024 - Nov 2024",
+      certificate: "/Logo/internship-letter.jpg",
+    },
+    {
+      id: 2,
+      title: "Alibaba Cloud Certification",
+      company: "Alibaba Cloud",
+      duration: " Feb 2024",
+      certificate: "/Logo/Alibaba.jpg",
+    },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Stagger the children animations
-      },
-    },
+  const handleCertificateClick = (certificate) => {
+    setSelectedCertificate(certificate);
   };
 
-  const cardVariants = {
-    hidden: { x: -100, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 20,
-      },
-    },
+  const closeModal = () => {
+    setSelectedCertificate(null);
   };
 
   return (
-    <motion.div
-      className="experience-container"
-      ref={ref} // Attach the intersection observer to this container
-      variants={containerVariants}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"} // Trigger animation when in view
-    >
-      <motion.h2
-        className="experience-title"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : -30 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        Technologies I Work With
-      </motion.h2>
-      <div className="technologies-grid">
-        {technologies.map((tech, index) => (
+    <div className="experience-container">
+      <h2 className="experience-title">My Experience & Certificates</h2>
+      <div className="experience-list">
+        {experiences.map((exp) => (
           <motion.div
-            key={index}
-            className="technology-card"
-            variants={cardVariants}
+            key={exp.id}
+            className="experience-card"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: exp.id * 0.2 }}
           >
-            {tech}
+            <h3 className="experience-role">{exp.title}</h3>
+            <p className="experience-company">{exp.company}</p>
+            <p className="experience-duration">{exp.duration}</p>
+            <button
+              className="certificate-btn"
+              onClick={() => handleCertificateClick(exp.certificate)}
+            >
+              View Certificate
+            </button>
           </motion.div>
         ))}
       </div>
-    </motion.div>
+
+      {/* Modal for Certificate */}
+      {selectedCertificate && (
+        <motion.div
+          className="modal-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={closeModal}
+        >
+          <motion.div
+            className="modal-content"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+          >
+            <img
+              src={selectedCertificate}
+              alt="Certificate"
+              className="certificate-image"
+            />
+            <button className="close-modal-btn" onClick={closeModal}>
+              Close
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </div>
   );
 };
 
