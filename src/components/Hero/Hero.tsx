@@ -14,7 +14,7 @@ const Hero = () => {
       transition={{ duration: 1 }}
       viewport={{ once: false }} // Allow repeated animations
     >
-      {/* Left Section: Hero Image */}
+      {/* Left Section: Hero Image *
       <motion.div
         className="hero-image-container"
         initial={{ x: -100, opacity: 0 }}

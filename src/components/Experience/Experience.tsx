@@ -14,7 +14,7 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      title: "Frontend Developer Intern",
+      title: "Full Stack Developer Intern",
       company: "Wertone Technology",
       duration: "June 2024 - Nov 2024",
       certificate: "/Logo/internship-letter.jpg",
