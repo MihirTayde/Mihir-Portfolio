@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Mihir Portfolio | MERN Developer",
   description:
     "A dark-themed portfolio showcasing Mihir's MERN stack web and mobile development work.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
