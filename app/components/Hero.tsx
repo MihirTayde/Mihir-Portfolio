@@ -1,4 +1,112 @@
-﻿export default function Hero() {
+﻿import {
+  FaReact,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaGithub,
+  FaDocker,
+  FaFigma,
+  FaAws,
+} from "react-icons/fa";
+
+import {
+  SiNextdotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMongodb,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiRedux,
+  SiPrisma,
+  SiFirebase,
+  SiVercel,
+} from "react-icons/si";
+
+export default function Hero() {
+  const skills = [
+    {
+      name: "HTML",
+      icon: FaHtml5,
+    },
+    {
+      name: "CSS",
+      icon: FaCss3Alt,
+    },
+    {
+      name: "JavaScript",
+      icon: SiJavascript,
+    },
+    {
+      name: "TypeScript",
+      icon: SiTypescript,
+    },
+    {
+      name: "React",
+      icon: FaReact,
+    },
+    {
+      name: "Next.js",
+      icon: SiNextdotjs,
+    },
+    {
+      name: "Redux",
+      icon: SiRedux,
+    },
+    {
+      name: "Tailwind CSS",
+      icon: SiTailwindcss,
+    },
+    {
+      name: "Node.js",
+      icon: FaNodeJs,
+    },
+    {
+      name: "Express.js",
+      icon: SiExpress,
+    },
+    {
+      name: "MongoDB",
+      icon: SiMongodb,
+    },
+    {
+      name: "PostgreSQL",
+      icon: SiPostgresql,
+    },
+    {
+      name: "Prisma",
+      icon: SiPrisma,
+    },
+    {
+      name: "Git",
+      icon: FaGitAlt,
+    },
+    {
+      name: "GitHub",
+      icon: FaGithub,
+    },
+    {
+      name: "Docker",
+      icon: FaDocker,
+    },
+    {
+      name: "Firebase",
+      icon: SiFirebase,
+    },
+    {
+      name: "Vercel",
+      icon: SiVercel,
+    },
+    {
+      name: "AWS",
+      icon: FaAws,
+    },
+    {
+      name: "Figma",
+      icon: FaFigma,
+    },
+  ];
   return (
     <section
       id="hero"
@@ -36,21 +144,27 @@
             Contact me
           </a>
         </div>
+        <br />
+        <p className="text-sm uppercase tracking-[0.35em] text-indigo-300">
+          Technologies I work with
+        </p>
+        <br />
 
-        <div className="mt-10 flex flex-wrap gap-3 text-sm text-slate-300">
-          {[
-            "React",
-            "Next.js",
-            "Node.js",
-            "Express",
-            "PostgreSQL",
-            "React Native",
-          ].map((skill) => (
+        <div className="flex flex-wrap gap-3">
+          {skills.map(({ name, icon: Icon }) => (
             <span
-              key={skill}
-              className="rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2"
+              key={name}
+              className="
+      flex items-center gap-2
+      rounded-full
+      border border-slate-700
+      bg-slate-900/80
+      px-4 py-2
+      "
             >
-              {skill}
+              <Icon className="text-xl" />
+
+              {name}
             </span>
           ))}
         </div>
