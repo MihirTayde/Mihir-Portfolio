@@ -146,8 +146,8 @@ export default function Projects() {
               // >
               <Link
                 key={project.title}
-                href={project.Link || `/projects/${project.id}`}
-                target={project.Link ? "_blank" : "_self"}
+                href={project.link || `/projects/${project.id}`}
+                target={project.link ? "_blank" : "_self"}
                 rel="noopener noreferrer"
               >
                 <div
